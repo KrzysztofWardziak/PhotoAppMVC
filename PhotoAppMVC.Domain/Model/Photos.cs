@@ -6,6 +6,7 @@ namespace PhotoAppMVC.Domain.Model
 {
     public class Photos
     {
+        public int Id { get; set; }
         public string Photo1 { get; set; }
         public string Photo2 { get; set; }
         public string Photo3 { get; set; }

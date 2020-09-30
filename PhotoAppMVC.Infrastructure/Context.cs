@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PhotoAppMVC.Domain.Model;
-using Type = PhotoAppMVC.Domain.Model.Type;
+
 
 namespace PhotoAppMVC.Infrastructure
 {
@@ -20,7 +20,7 @@ namespace PhotoAppMVC.Infrastructure
         public DbSet<Photos> Photoses { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<Type> Types { get; set; }
+        public DbSet<PhotoAppMVC.Domain.Model.Type> Types { get; set; }
 
         public Context(DbContextOptions options) : base(options)
         {
