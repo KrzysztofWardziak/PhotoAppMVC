@@ -6,5 +6,8 @@ namespace PhotoAppMVC.Application.ViewModels.Customer
 {
     public class AddressForListVM
     {
+        public int Id { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
     }
 }

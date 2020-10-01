@@ -52,7 +52,7 @@ namespace PhotoAppMVC.Web.Controllers
 
         public IActionResult ViewCustomer(int customerId)
         {
-            var customerModel = customerService.GetCustomerById(customerId);
+            var customerModel = customerService.GetCustomerDetails(customerId);
             return View(customerModel);
         }  
     }
