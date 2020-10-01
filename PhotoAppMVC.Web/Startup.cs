@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PhotoAppMVC.Infrastructure;
+using PhotoAppMVC.Domain.Interface;
+using PhotoAppMVC.Infrastructure.Repositores;
+using PhotoAppMVC.Application;
 
 namespace PhotoAppMVC.Web
 {
@@ -32,6 +35,10 @@ namespace PhotoAppMVC.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<Context>();
+
+            services.AddApplication();
+            services.AddInfrastructure();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 

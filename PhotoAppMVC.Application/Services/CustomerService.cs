@@ -14,6 +14,11 @@ namespace PhotoAppMVC.Application.Services
     {
         private readonly ICustomerRepository _customerRepo;
         private readonly IMapper _mapper;
+        public CustomerService(ICustomerRepository customerRepo, IMapper mapper)
+        {
+            _customerRepo = customerRepo;
+            _mapper = mapper;
+        }
         public int AddCustomer(NewCustomerVM customerId)
         {
             throw new NotImplementedException();
