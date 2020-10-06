@@ -22,7 +22,7 @@ namespace PhotoAppMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = _custService.GetAllCustomersForList(2, 1, "");
+            var model = _custService.GetAllCustomersForList(8, 1, "");
             return View(model);
         }
         [HttpPost]

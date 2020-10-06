@@ -12,6 +12,7 @@ namespace PhotoAppMVC.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<IItemRepository, ItemRepository>();
             return services;
         }

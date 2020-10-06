@@ -16,6 +16,7 @@ namespace PhotoAppMVC.Infrastructure
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerContactInformation> CustomerContactInformations { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<ContactMessage> ContactMessages { get; set; }
         public DbSet<ItemTag> ItemTag { get; set; }
         public DbSet<Photos> Photoses { get; set; }
         public DbSet<Provider> Providers { get; set; }
