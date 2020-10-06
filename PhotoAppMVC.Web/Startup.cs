@@ -42,6 +42,7 @@ namespace PhotoAppMVC.Web
 
             services.AddApplication();
             services.AddInfrastructure();
+            services.AddContact();
 
             services.AddControllersWithViews();
                 //.AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);

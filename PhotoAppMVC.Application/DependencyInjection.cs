@@ -17,5 +17,12 @@ namespace PhotoAppMVC.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
+
+        public static IServiceCollection AddContact(this IServiceCollection services)
+        {
+            services.AddTransient<IContactService, ContactService>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            return services;
+        }
     }
 }
