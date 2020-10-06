@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PhotoAppMVC.Domain.Model;
 
 namespace PhotoAppMVC.Application.Services
 {
@@ -19,19 +20,30 @@ namespace PhotoAppMVC.Application.Services
             _customerRepo = customerRepo;
             _mapper = mapper;
         }
-        public int AddCustomer(NewCustomerVM customerId)
+        public int AddCustomer(NewCustomerVM customer)
         {
-            throw new NotImplementedException();
+            var cust = _mapper.Map<Customer>(customer);
+            var id = _customerRepo.AddCustomer(cust);
+            return id;
         }
 
-        public ListCustomerForListVM GetAllCustomersForList()
+        public void DeleteCustomer(int id)
         {
-            var customers = _customerRepo.GetAllActiveCustomers().
-                ProjectTo<CustomerForListVM>(_mapper.ConfigurationProvider).ToList();
+            _customerRepo.DeleteCustomer(id);
+        }
 
+        public ListCustomerForListVM GetAllCustomersForList(int pageSize, int pageNo, string searchString)
+        {
+            var customers = _customerRepo.GetAllActiveCustomers().Where(p => p.Name.StartsWith(searchString))
+                .ProjectTo<CustomerForListVM>(_mapper.ConfigurationProvider).ToList();
+
+            var customersToShow = customers.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             var customerList = new ListCustomerForListVM()
             {
-                Customers = customers,
+                PageSize = pageSize,
+                CurrentPage = pageNo,
+                SearchString = searchString,
+                Customers = customersToShow,
                 Count = customers.Count
             };
             return customerList;
@@ -39,27 +51,50 @@ namespace PhotoAppMVC.Application.Services
 
         }
 
-        public CustomerDetailsVM GetCustomerDetails(int customerId)
+        public CustomerDetailsVM GetCustomerDetails(int id)
         {
-            var customer = _customerRepo.GetCustomer(customerId);
+            var customer = _customerRepo.GetCustomer(id);
             var customerVM = _mapper.Map<CustomerDetailsVM>(customer);
 
             customerVM.Addresses = new List<AddressForListVM>();
             customerVM.PhoneNumber = new List<ContactDetailListVM>();
             customerVM.Emails = new List<ContactDetailListVM>();
-
-            foreach(var address in customer.Addresses)
+             
+            
+            
+            foreach (var address in customerVM.Addresses)
             {
                 var add = new AddressForListVM()
                 {
                     Id = address.Id,
                     Country = address.Country,
-                    City = address.City
+                    City = address.City,
+                    BuildingNumber = address.BuildingNumber,
+                    FlatNumber = address.FlatNumber,
+                    Street = address.Street,
+                    ZipCode = address.ZipCode,
+                    CustomerId = address.CustomerId,
+                    Customer = address.Customer,
+                    
                 };
                 customerVM.Addresses.Add(add);
                 
             }
             return customerVM;
+
+        }
+
+        public NewCustomerVM GetCustomerForEdit(int id)
+        {
+            var customer = _customerRepo.GetCustomer(id);
+            var customerVM = _mapper.Map<NewCustomerVM>(customer);
+            return customerVM;
+        }
+
+        public void UpdateCustomer(NewCustomerVM model)
+        {
+            var customer = _mapper.Map<Customer>(model);
+            _customerRepo.UpdateCustomer(customer);
         }
     }
 }

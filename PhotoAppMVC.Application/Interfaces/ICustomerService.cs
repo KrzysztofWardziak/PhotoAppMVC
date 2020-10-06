@@ -7,8 +7,11 @@ namespace PhotoAppMVC.Application.Interfaces
 {
     public interface ICustomerService
     {
-        ListCustomerForListVM GetAllCustomersForList();
+        ListCustomerForListVM GetAllCustomersForList(int pageSize, int pageNo, string searchString);
         int AddCustomer(NewCustomerVM customerId);
-        CustomerDetailsVM GetCustomerDetails(int customerId);
+        CustomerDetailsVM GetCustomerDetails(int idd);
+        NewCustomerVM GetCustomerForEdit(int id);
+        void UpdateCustomer(NewCustomerVM model);
+        void DeleteCustomer(int id);
     }
 }

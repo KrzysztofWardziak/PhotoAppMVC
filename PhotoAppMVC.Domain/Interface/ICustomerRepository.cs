@@ -10,5 +10,9 @@ namespace PhotoAppMVC.Domain.Interface
     {
         IQueryable<Customer> GetAllActiveCustomers();
         Customer GetCustomer(int customerId);
+
+        int AddCustomer(Customer customer);
+        void UpdateCustomer(Customer customer);
+        void DeleteCustomer(int id);
     }
 }
