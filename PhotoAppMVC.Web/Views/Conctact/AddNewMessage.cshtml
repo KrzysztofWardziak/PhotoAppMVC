@@ -1,0 +1,39 @@
+﻿@model PhotoAppMVC.Application.ViewModels.Contact.NewContactMessageVM
+
+@{
+    ViewData["Title"] = "AddNewMessage";
+}
+
+<h1>Formularz kontaktowy</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddNewMessage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" class="form-control" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Imię i nazwisko</label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Adres e-mail</label>
+                <input asp-for="Email" type="email" class="form-control" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" id="text-area" class="control-label">Treść wiadomości</label>
+                <textarea id="text-area" rows="8" cols="200" asp-for="Message" class="form-control" placeholder="Tutaj wpisz treść swojej wiadomości" required></textarea>
+                @*<input asp-for="Message" type="text" class="form-control" />*@
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Date" class="form-control" />
+            <div class="form-group">
+                <input type="submit" value="Wyślij" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

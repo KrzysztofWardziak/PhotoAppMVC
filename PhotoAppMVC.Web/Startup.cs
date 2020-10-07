@@ -18,6 +18,7 @@ using PhotoAppMVC.Infrastructure;
 using PhotoAppMVC.Domain.Interface;
 using PhotoAppMVC.Infrastructure.Repositores;
 using PhotoAppMVC.Application;
+using PhotoAppMVC.Application.ViewModels.Contact;
 using PhotoAppMVC.Application.ViewModels.Customer;
 
 namespace PhotoAppMVC.Web
@@ -44,11 +45,12 @@ namespace PhotoAppMVC.Web
             services.AddInfrastructure();
             services.AddContact();
 
-            services.AddControllersWithViews();
-                //.AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
+            services.AddControllersWithViews()
+                .AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
             services.AddRazorPages();
 
             //services.AddTransient<IValidator<NewCustomerVM>, NewCustomerValidation>();
+            services.AddTransient<IValidator<NewContactMessageVM>, NewMessageValidation>();
 
         }
 

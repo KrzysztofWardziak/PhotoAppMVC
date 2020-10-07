@@ -12,7 +12,7 @@ namespace PhotoAppMVC.Application.ViewModels.Contact
         public int PageSize { get; set; }
         public string SearchString { get; set; }
         public int Count { get; set; }
-        public DateTime Date { get; set; }
+        
 
     }
 }

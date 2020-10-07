@@ -28,17 +28,25 @@
 .nav-menu ul li:hover a {
     background: #00ffff;
 }
+/*.nav-menu ul ul {
+    position: absolute;
+    padding: 0;
+    min-width: 160px;
+    display: none;
+    top: 80%;
+    
+}*/
+
 .nav-menu ul ul {
     position: absolute;
     padding: 0;
     min-width: 160px;
     display: none;
-    top: 88%;
-    
+    top: 85%;
 }
 .nav-menu ul li:hover > ul {
-    display: block;
-}
+        display: block;
+    }
 
 .nav-menu ul ul li {
     position: relative;
@@ -53,3 +61,9 @@
     border: 1px solid black;
     padding: 6px 6px;
 }
+
+/*a .nav-link .text-dark {
+    position: absolute;
+    display: none;
+    top: 45%;
+}*/

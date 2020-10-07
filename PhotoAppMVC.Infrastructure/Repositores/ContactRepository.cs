@@ -17,7 +17,8 @@ namespace PhotoAppMVC.Infrastructure.Repositores
         }
         public int AddMessage(ContactMessage contactMessage)
         {
-
+            var date = DateTime.Now.ToString("F");
+            contactMessage.Date = date;
             _context.ContactMessages.Add(contactMessage);
             _context.SaveChanges();
             return contactMessage.Id;

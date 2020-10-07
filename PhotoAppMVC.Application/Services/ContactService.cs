@@ -35,6 +35,7 @@ namespace PhotoAppMVC.Application.Services
             var contacts = _contactRepository.GetAllMessage().Where(p => p.Name.StartsWith(searchString))
                 .ProjectTo<ContactForListVM>(_mapper.ConfigurationProvider).ToList();
 
+           
             
             var contactToShow = contacts.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             var contactList = new ListContactMessageVM()
@@ -45,9 +46,9 @@ namespace PhotoAppMVC.Application.Services
                 SearchString = searchString,
                 Contacts = contactToShow,
                 Count = contacts.Count,
-                Date = Convert.ToDateTime(DateTime.Now.ToString("F"))
                 
             };
+            
             return contactList;
         }
     }

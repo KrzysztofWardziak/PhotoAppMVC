@@ -39,15 +39,16 @@ namespace PhotoAppMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult ContactInfo()
+        public IActionResult AddNewMessage()
         {
             return View( new NewContactMessageVM());
         }
         [HttpPost]
-        public IActionResult ContactInfo(NewContactMessageVM contact)
+        public IActionResult AddNewMessage(NewContactMessageVM contact)
         {
-            var id = _contService.AddMessage(contact);
-            return RedirectToAction("Index");
+                var id = _contService.AddMessage(contact);
+                return RedirectToAction("Index");
+
         }
 
     }
