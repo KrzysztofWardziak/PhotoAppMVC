@@ -9,6 +9,6 @@ namespace PhotoAppMVC.Domain.Model
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<ItemTag> ItemTags { get; set; }
+        public ICollection<BlogTag> BlogTags { get; set; }
     }
 }

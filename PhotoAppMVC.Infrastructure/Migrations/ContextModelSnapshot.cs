@@ -254,6 +254,58 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogTag", b =>
+                {
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BlogId", "TagId");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ItemTag");
+                });
+
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.ContactDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -301,8 +353,8 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -351,7 +403,7 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerAddNewMessagermation", b =>
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerContactInformation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -375,7 +427,7 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.HasIndex("CustomerRef")
                         .IsUnique();
 
-                    b.ToTable("CustomerAddNewMessagermations");
+                    b.ToTable("CustomerContactInformations");
                 });
 
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.Item", b =>
@@ -396,21 +448,6 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.ItemTag", b =>
-                {
-                    b.Property<int>("ItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ItemId", "TagId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("ItemTag");
                 });
 
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.Photos", b =>
@@ -545,6 +582,32 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogDetails", b =>
+                {
+                    b.HasOne("PhotoAppMVC.Domain.Model.Tag", "Tag")
+                        .WithMany()
+                        .HasForeignKey("TagId");
+                });
+
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogTag", b =>
+                {
+                    b.HasOne("PhotoAppMVC.Domain.Model.BlogDetails", "Blog")
+                        .WithMany("BlogTags")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PhotoAppMVC.Domain.Model.Item", null)
+                        .WithMany("ItemTags")
+                        .HasForeignKey("ItemId");
+
+                    b.HasOne("PhotoAppMVC.Domain.Model.Tag", "Tag")
+                        .WithMany("BlogTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.ContactDetail", b =>
                 {
                     b.HasOne("PhotoAppMVC.Domain.Model.ContactDetailType", "ContactDetailType")
@@ -560,11 +623,11 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerAddNewMessagermation", b =>
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerContactInformation", b =>
                 {
                     b.HasOne("PhotoAppMVC.Domain.Model.Customer", "Customer")
-                        .WithOne("CustomerAddNewMessagermation")
-                        .HasForeignKey("PhotoAppMVC.Domain.Model.CustomerAddNewMessagermation", "CustomerRef")
+                        .WithOne("CustomerContactInformation")
+                        .HasForeignKey("PhotoAppMVC.Domain.Model.CustomerContactInformation", "CustomerRef")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -574,21 +637,6 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.HasOne("PhotoAppMVC.Domain.Model.Type", "Type")
                         .WithMany("Items")
                         .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.ItemTag", b =>
-                {
-                    b.HasOne("PhotoAppMVC.Domain.Model.Item", "Item")
-                        .WithMany("ItemTags")
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PhotoAppMVC.Domain.Model.Tag", "Tag")
-                        .WithMany("ItemTags")
-                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

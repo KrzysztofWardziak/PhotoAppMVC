@@ -19,7 +19,7 @@ namespace PhotoAppMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = _contService.GetAllContactsForList(8, 1, "");
+            var model = _contService.GetAllContactsForList(10, 1, "");
             return View(model);
         }
         [HttpPost]
@@ -50,6 +50,11 @@ namespace PhotoAppMVC.Web.Controllers
                 return RedirectToAction("Index");
 
         }
+        public IActionResult Contact_us()
+        {
+            return View();
+        }
+
 
     }
 }

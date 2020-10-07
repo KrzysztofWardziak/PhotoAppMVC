@@ -14,6 +14,7 @@ namespace PhotoAppMVC.Infrastructure
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<IBlogRepository, BlogRepository>();
             return services;
         }
     }

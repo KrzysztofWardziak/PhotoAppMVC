@@ -353,7 +353,7 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerAddNewMessagermation", b =>
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerContactInformation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -377,7 +377,7 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.HasIndex("CustomerRef")
                         .IsUnique();
 
-                    b.ToTable("CustomerAddNewMessagermations");
+                    b.ToTable("CustomerContactInformation");
                 });
 
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.Item", b =>
@@ -562,11 +562,11 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerAddNewMessagermation", b =>
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.CustomerContactInformation", b =>
                 {
                     b.HasOne("PhotoAppMVC.Domain.Model.Customer", "Customer")
-                        .WithOne("CustomerAddNewMessagermation")
-                        .HasForeignKey("PhotoAppMVC.Domain.Model.CustomerAddNewMessagermation", "CustomerRef")
+                        .WithOne("CustomerContactInformation")
+                        .HasForeignKey("PhotoAppMVC.Domain.Model.CustomerContactInformation", "CustomerRef")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

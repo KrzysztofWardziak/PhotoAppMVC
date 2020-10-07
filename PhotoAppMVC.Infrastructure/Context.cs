@@ -14,10 +14,11 @@ namespace PhotoAppMVC.Infrastructure
         public DbSet<ContactDetail> ContactDetails { get; set; }
         public DbSet<ContactDetailType> ContactDetailTypes { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<CustomerContactInformation> CustomerContactInformation { get; set; }
+        public DbSet<CustomerContactInformation> CustomerContactInformations { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ContactMessage> ContactMessages { get; set; }
-        public DbSet<ItemTag> ItemTag { get; set; }
+        public DbSet<BlogDetails> Blogs { get; set; }
+        public DbSet<BlogTag> ItemTag { get; set; }
         public DbSet<Photos> Photoses { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Tag> Tags { get; set; }
@@ -35,17 +36,17 @@ namespace PhotoAppMVC.Infrastructure
                 .HasOne(a => a.CustomerContactInformation).WithOne(b => b.Customer)
                 .HasForeignKey<CustomerContactInformation>(e => e.CustomerRef);
 
-            builder.Entity<ItemTag>()
-                .HasKey(it => new { it.ItemId, it.TagId });
+            builder.Entity<BlogTag>()
+                .HasKey(it => new { it.BlogId, it.TagId });
 
-            builder.Entity<ItemTag>()
-                .HasOne<Item>(it => it.Item)
-                .WithMany(i => i.ItemTags)
-                .HasForeignKey(it => it.ItemId);
+            builder.Entity<BlogTag>()
+                .HasOne<BlogDetails>(bl => bl.Blog)
+                .WithMany(b => b.BlogTags)
+                .HasForeignKey(it => it.BlogId);
 
-            builder.Entity<ItemTag>()
+            builder.Entity<BlogTag>()
                 .HasOne<Tag>(it => it.Tag)
-                .WithMany(i => i.ItemTags)
+                .WithMany(i => i.BlogTags)
                 .HasForeignKey(it => it.TagId);
         }
     }

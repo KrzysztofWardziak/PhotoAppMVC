@@ -293,7 +293,7 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerAddNewMessagermations",
+                name: "CustomerContactInformation",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -305,9 +305,9 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerAddNewMessagermations", x => x.Id);
+                    table.PrimaryKey("CustomerContactInformations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CustomerAddNewMessagermations_Customers_CustomerRef",
+                        name: "FK_CustomerContactInformations_Customers_CustomerRef",
                         column: x => x.CustomerRef,
                         principalTable: "Customers",
                         principalColumn: "Id",
@@ -413,8 +413,8 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerAddNewMessagermations_CustomerRef",
-                table: "CustomerAddNewMessagermations",
+                name: "IX_CustomerContactInformations_CustomerRef",
+                table: "CustomerContactInformations",
                 column: "CustomerRef",
                 unique: true);
 
@@ -453,7 +453,7 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                 name: "ContactDetails");
 
             migrationBuilder.DropTable(
-                name: "CustomerAddNewMessagermations");
+                name: "CustomerContactInformations");
 
             migrationBuilder.DropTable(
                 name: "ItemTag");

@@ -24,5 +24,12 @@ namespace PhotoAppMVC.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
+
+        public static IServiceCollection AddBlog(this IServiceCollection services)
+        {
+            services.AddTransient<IBlogService, BlogService>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            return services;
+        }
     }
 }

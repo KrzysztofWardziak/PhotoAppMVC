@@ -10,8 +10,8 @@ using PhotoAppMVC.Infrastructure;
 namespace PhotoAppMVC.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200930122709_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201007131558_BlogTable")]
+    partial class BlogTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -256,6 +256,58 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogTag", b =>
+                {
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BlogId", "TagId");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ItemTag");
+                });
+
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.ContactDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -294,6 +346,30 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ContactDetailTypes");
+                });
+
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.ContactMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactMessages");
                 });
 
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.Customer", b =>
@@ -374,21 +450,6 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.ItemTag", b =>
-                {
-                    b.Property<int>("ItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ItemId", "TagId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("ItemTag");
                 });
 
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.Photos", b =>
@@ -523,6 +584,32 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogDetails", b =>
+                {
+                    b.HasOne("PhotoAppMVC.Domain.Model.Tag", "Tag")
+                        .WithMany()
+                        .HasForeignKey("TagId");
+                });
+
+            modelBuilder.Entity("PhotoAppMVC.Domain.Model.BlogTag", b =>
+                {
+                    b.HasOne("PhotoAppMVC.Domain.Model.BlogDetails", "Blog")
+                        .WithMany("BlogTags")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PhotoAppMVC.Domain.Model.Item", null)
+                        .WithMany("ItemTags")
+                        .HasForeignKey("ItemId");
+
+                    b.HasOne("PhotoAppMVC.Domain.Model.Tag", "Tag")
+                        .WithMany("BlogTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("PhotoAppMVC.Domain.Model.ContactDetail", b =>
                 {
                     b.HasOne("PhotoAppMVC.Domain.Model.ContactDetailType", "ContactDetailType")
@@ -552,21 +639,6 @@ namespace PhotoAppMVC.Infrastructure.Migrations
                     b.HasOne("PhotoAppMVC.Domain.Model.Type", "Type")
                         .WithMany("Items")
                         .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PhotoAppMVC.Domain.Model.ItemTag", b =>
-                {
-                    b.HasOne("PhotoAppMVC.Domain.Model.Item", "Item")
-                        .WithMany("ItemTags")
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PhotoAppMVC.Domain.Model.Tag", "Tag")
-                        .WithMany("ItemTags")
-                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

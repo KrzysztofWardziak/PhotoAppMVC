@@ -4,10 +4,10 @@ using System.Text;
 
 namespace PhotoAppMVC.Domain.Model
 {
-    public class ItemTag
+    public class BlogTag
     {
-        public int ItemId { get; set; }
-        public Item Item { get; set; }
+        public int BlogId { get; set; }
+        public BlogDetails Blog { get; set; }
         public int TagId { get; set; }
         public Tag Tag { get; set; }
     }

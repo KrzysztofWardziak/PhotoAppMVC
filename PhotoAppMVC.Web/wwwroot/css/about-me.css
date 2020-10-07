@@ -1,0 +1,43 @@
+﻿
+img {
+
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 5px; 
+    border-radius: 15%;
+    max-width: 50%;
+    max-height: 50%;
+    padding: 2px;
+    
+    /*max-height: 500px;
+    max-width: 500px;
+    display: block;
+
+    position: absolute;
+    float: right;
+    width: 500px;
+   
+    padding: 10px;*/
+/*    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;*/
+    
+}
+
+/*.about-me {
+    display: block;
+    font-size: 15px;
+    
+
+}*/
+
+
+.about {
+
+
+/*    font-size: 15px;
+    max-height: 300px;
+    max-width: 300px;
+    overflow: auto;*/
+
+}

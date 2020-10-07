@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/menu.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/about-me.css" />
 </head>
 
     <body>
@@ -26,34 +27,37 @@
                         <partial name="_LoginPartial" />
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Oferta</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Fotografia</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Portfolio</a>
                                 <ul>
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="AboutMe" asp-action="Privacy">O Moich zdjęciach</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="AboutMe" asp-action="Privacy">Zdjęcia ślubne</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Gallery" asp-action="Privacy">Galeria zdjęć</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Gallery" asp-action="Privacy">Sesje narzeczeńskie</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Portfolio" asp-action="Privacy">Portfolio</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Gallery" asp-action="Privacy">Sesje indywidualne</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="Privacy"> Blog</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="Index"> Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="AddBlog"> AddBlog</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Timetable" asp-action="Privacy">Terminarz</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Conctact" asp-action="AddNewMessage">Kontakt</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Conctact" asp-action="Contact_us">O mnie</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cooperation" asp-action="Privacy">Współpraca</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Conctact" asp-action="AddNewMessage">Kontakt</a>
                             </li>
                         </ul>
                     </div>
