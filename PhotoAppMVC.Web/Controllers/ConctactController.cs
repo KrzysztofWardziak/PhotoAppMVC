@@ -55,6 +55,5 @@ namespace PhotoAppMVC.Web.Controllers
             return View();
         }
 
-
     }
 }

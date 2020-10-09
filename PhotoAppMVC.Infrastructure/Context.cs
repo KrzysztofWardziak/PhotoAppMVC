@@ -21,6 +21,7 @@ namespace PhotoAppMVC.Infrastructure
         public DbSet<BlogTag> ItemTag { get; set; }
         public DbSet<Photos> Photoses { get; set; }
         public DbSet<Provider> Providers { get; set; }
+        public DbSet<Offer> Offers { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<PhotoAppMVC.Domain.Model.Type> Types { get; set; }
 

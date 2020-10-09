@@ -31,5 +31,12 @@ namespace PhotoAppMVC.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
+
+        public static IServiceCollection AddOffer(this IServiceCollection services)
+        {
+            services.AddTransient<IOfferService, OfferService>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            return services;
+        }
     }
 }
