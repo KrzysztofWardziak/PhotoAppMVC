@@ -9,7 +9,7 @@
 <p>
     <a asp-action="AddBlog">Create New</a>
 </p>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -50,4 +50,18 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+
+@foreach (var item in Model.Blogs)
+{
+    <div class="blog-info">
+        <h1 class="blog-header">@item.Title</h1>
+        <p>@item.Text</p>
+        <a href="/Blog/blog-details/@item.Id">
+            <img src="/gallery/Upload/Blog/@item.PhotoPath" alt="photo" />
+            @*<img src="/gallery/Upload/Blog/@item.Id/Thumbs/@item.PhotoPath" alt="photo" />*@
+        </a>
+        <p>Data dodania: @item.CreatedDate</p>
+    </div>
+}

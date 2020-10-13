@@ -1,0 +1,42 @@
+﻿@model PhotoAppMVC.Application.ViewModels.Categories.CategoriesViewVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddCategory">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa kategorii</th>
+            <th>Ścieżka</th>
+            <th>Sortowanie</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Categorieses) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sorting)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "", new { id=item.Id}) |
+                @Html.ActionLink("Details", "", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

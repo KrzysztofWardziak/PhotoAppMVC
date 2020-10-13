@@ -9,7 +9,8 @@ namespace PhotoAppMVC.Application.Interfaces
     public interface IBlogService
     {
         int AddNewBlog(NewBlogVM blog);
-        BlogViewVM GetBlogForView(int pageSize, int pageNo, string searchString);
+        //BlogViewVM GetBlogForView(int pageSize, int pageNo, string searchString);
+        BlogViewVM GetBlogForView();
         NewBlogVM GetBlogForEdit(int id);
         void UpdateBlog(NewBlogVM model);
         void DeleteBlog(int id);
