@@ -17,7 +17,7 @@ namespace PhotoAppMVC.Infrastructure.Repositores
         }
         public int AddOffer(Offer offer)
         {
-            var date = DateTime.Now.ToString("F");
+            var date = DateTime.Now.ToString("D");
             offer.Date = date;
             _context.Offers.Add(offer);           
             _context.SaveChanges();

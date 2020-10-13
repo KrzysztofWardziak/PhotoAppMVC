@@ -1,19 +1,20 @@
-﻿@model PhotoAppMVC.Application.ViewModels.Offer.NewOfferVM
+﻿@model PhotoAppMVC.Application.ViewModels.NewCategoriesVM
 
 @{
-    ViewData["Title"] = "AddOffer";
+    ViewData["Title"] = "AddCategory";
 }
 
-<h1>AddOffer</h1>
+<h1>AddCategory</h1>
 
-<h4>NewOfferVM</h4>
+<h4>NewCategoriesVM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddOffer">
+        <form asp-action="AddCategory">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input type="hidden" asp-for="Id" class="form-control" />
+               
             </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -21,17 +22,14 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control" />
-                <span asp-validation-for="Text" class="text-danger"></span>
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Date" class="form-control" />
+                <label asp-for="Sorting" class="control-label"></label>
+                <input  asp-for="Sorting" class="form-control" />
+                <span asp-validation-for="Sorting" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -18,8 +18,10 @@ namespace PhotoAppMVC.Infrastructure.Repositores
         }
         public int AddBlog(BlogDetails blog)
         {
+
             var date = DateTime.Now.ToString("F");
             blog.CreatedDate = date;
+           
             _context.Blogs.Add(blog);
             _context.SaveChanges();
             return blog.Id;
@@ -37,7 +39,7 @@ namespace PhotoAppMVC.Infrastructure.Repositores
 
         public IQueryable<BlogDetails> GetAllBlogs()
         {
-            return _context.Blogs;
+            return _context.Blogs.OrderByDescending(c => c.Id);
         }
 
         public BlogDetails GetBlog(int blogId)

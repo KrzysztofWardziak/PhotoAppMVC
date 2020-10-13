@@ -43,21 +43,34 @@ namespace PhotoAppMVC.Application.Services
             return blogVM;
         }
 
-        public BlogViewVM GetBlogForView(int pageSize, int pageNo, string searchString)
-        {
-            var blogs = _blogRepository.GetAllBlogs().Where(p => p.Title.StartsWith(searchString) && p.Text.StartsWith(searchString))
-                .ProjectTo<BlogForListVM>(_mapper.ConfigurationProvider).ToList();
+        //public BlogViewVM GetBlogForView(int pageSize, int pageNo, string searchString)
+        //{
+        //    var blogs = _blogRepository.GetAllBlogs().Where(p => p.Title.StartsWith(searchString) && p.Text.StartsWith(searchString))
+        //        .ProjectTo<BlogForListVM>(_mapper.ConfigurationProvider).ToList();
 
-            var blogsToShow = blogs.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+        //    var blogsToShow = blogs.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+        //    var blogList = new BlogViewVM()
+        //    {
+        //        PageSize = pageSize,
+        //        CurrentPage = pageNo,
+        //        SearchString = searchString,
+        //        Blogs = blogsToShow,
+        //        Count = blogs.Count
+
+        //    };
+        //    return blogList;
+        //}
+
+        public BlogViewVM GetBlogForView()
+        {
+            var blogs = _blogRepository.GetAllBlogs().ProjectTo<BlogForListVM>(_mapper.ConfigurationProvider).ToList();
+
             var blogList = new BlogViewVM()
             {
-                PageSize = pageSize,
-                CurrentPage = pageNo,
-                SearchString = searchString,
-                Blogs = blogsToShow,
-                Count = blogs.Count
+                Blogs = blogs
 
             };
+            
             return blogList;
         }
 

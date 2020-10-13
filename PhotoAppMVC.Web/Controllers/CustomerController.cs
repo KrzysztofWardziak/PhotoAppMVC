@@ -71,17 +71,6 @@ namespace PhotoAppMVC.Web.Controllers
             }
             return View(model);
         }
-        //[HttpGet]
-        //public IActionResult AddNewAddressForClient(int customerId)
-        //{
-        //    return View(); 
-        //}
-
-        //[HttpPost] 
-        //public IActionResult AddNewAddressForClient(AddressModel model)
-        //{
-        //    return View();
-        //}
 
         public IActionResult ViewCustomer(int id)
         {
