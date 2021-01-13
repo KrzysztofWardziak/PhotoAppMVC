@@ -12,28 +12,32 @@
 
     <hr />
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <form asp-action="AddBlog" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <input type="hidden" asp-for="Id" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Title" class="control-label"></label>
-                    <input asp-for="Title" class="form-control" />
+                    <label asp-for="Title" class="control-label">Tytuł</label>
+                    <input asp-for="Title" class="form-control" required="" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <textarea asp-for="Text" class="form-control"></textarea>
+                    <label asp-for="Text" id="text-area" class="control-label">Treść bloga</label>
+                    <textarea id="text-area" rows="8" cols="200" asp-for="Text" class="form-control" required></textarea>
                     @*<label asp-for="Text" class="control-label"></label>
                         <input asp-for="Text" class="form-control"/>
                         <span asp-validation-for="Text" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
-                    <label asp-for="PhotoPath" class="control-label"></label>
-                    <input type="file" value="PhotoPath" asp-for="PhotoPath" class="form-control" multiple accept="image/*" />
-                    <span asp-validation-for="PhotoPath" class="text-danger"></span>
-
+                    <label asp-for="PhotoPath" class="control-label">Zdjęcie</label>
+                    <div class="col-md-10">
+                        @*<input type="file" id="ImageUpload" value="PhotoPath" asp-for="PhotoPath" class="form-control" multiple accept="image/*" />*@
+                        <input type="file" name="file" class="uploadPhoto" id="uploadPhoto" /> <br/>
+                        <img id="imgpreview" src="#" />
+                    </div>
+                    @*<span asp-validation-for="PhotoPath" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
                     <input type="hidden" asp-for="CreatedDate" class="form-control" />
@@ -49,4 +53,27 @@
         <a asp-action="Index">Back to List</a>
     </div>
 
+}
+
+@section Scripts {
+
+    <script>
+        $(function () {
+            /*
+            * Wysietlanie podgladu obrazka
+            */
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("img#imgpreview").attr("src", e.target.result).width(750).height(600);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#uploadPhoto").change(function () {
+                readURL(this);
+            })
+        });
+    </script>
 }

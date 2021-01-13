@@ -55,5 +55,19 @@ namespace PhotoAppMVC.Web.Controllers
             return View();
         }
 
+        public IActionResult ViewMessage(int id)
+        {
+           var contactModel = _contService.GetCustomerDetails(id);
+            return View(contactModel);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _contService.DeleteMessage(id);
+            return RedirectToAction("Index");
+        }
+
+        
+
     }
 }

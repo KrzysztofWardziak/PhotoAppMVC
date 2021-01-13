@@ -42,13 +42,43 @@ namespace PhotoAppMVC.Web.Controllers
         [HttpGet]
         public IActionResult AddOffer()
         {
+
             return View(new NewOfferVM());
+
 
         }
         [HttpPost]
         public IActionResult AddOffer(NewOfferVM offer)
         {
+
             var id = _offerService.AddNewOffer(offer);
+
+            return RedirectToAction("Index");
+
+
+        }
+
+        [HttpGet]
+        public IActionResult EditOffer(int id)
+        {
+            var offer = _offerService.GetOfferForEdit(id);
+            return View(offer);
+        }
+
+        [HttpPost]
+        public IActionResult EditOffer(NewOfferVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                _offerService.UpdateOffer(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public IActionResult DeleteOffer(int id)
+        {
+            _offerService.DeleteOffer(id);
             return RedirectToAction("Index");
 
         }

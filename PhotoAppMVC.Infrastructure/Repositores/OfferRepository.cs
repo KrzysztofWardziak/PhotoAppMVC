@@ -52,6 +52,8 @@ namespace PhotoAppMVC.Infrastructure.Repositores
             _context.Entry(offer).Property("Name").IsModified = true;
             _context.Entry(offer).Property("Text").IsModified = true;
             _context.Entry(offer).Property("Price").IsModified = true;
+            _context.Entry(offer).Property("Date").IsModified = true;
+            offer.Date = DateTime.Now.ToString("D");
             _context.SaveChanges();
         }
     }

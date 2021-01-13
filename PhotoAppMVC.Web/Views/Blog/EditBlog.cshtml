@@ -1,0 +1,46 @@
+﻿@model PhotoAppMVC.Application.ViewModels.NewBlogVM
+
+@{
+    ViewData["Title"] = "EditBlog";
+}
+
+<h1>EditBlog</h1>
+
+<h4>NewBlogVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="EditBlog">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Tytuł</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" id="text-area" class="control-label">Treść bloga</label>
+                <textarea id="text-area" rows="8" cols="200" asp-for="Text" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoPath" class="control-label"></label>
+                <input asp-for="PhotoPath" class="form-control" />
+                <span asp-validation-for="PhotoPath" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="ModifiedDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

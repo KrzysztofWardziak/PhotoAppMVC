@@ -10,5 +10,8 @@ namespace PhotoAppMVC.Application.Interfaces
         ListContactMessageVM GetAllContactsForList(int pageSize, int pageNo, string searchString);
 
         int AddMessage(NewContactMessageVM contactId);
+        ContactDetailsVM GetCustomerDetails(int id);
+        void DeleteMessage(int id);
+
     }
 }

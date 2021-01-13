@@ -30,6 +30,11 @@ namespace PhotoAppMVC.Application.Services
             return id;
         }
 
+        public void DeleteMessage(int id)
+        {
+            _contactRepository.DeleteMessage(id);
+        }
+
         public ListContactMessageVM GetAllContactsForList(int pageSize, int pageNo, string searchString)
         {
             var contacts = _contactRepository.GetAllMessage().Where(p => p.Name.StartsWith(searchString))
@@ -50,6 +55,14 @@ namespace PhotoAppMVC.Application.Services
             };
             
             return contactList;
+        }
+
+        public ContactDetailsVM GetCustomerDetails(int id)
+        {
+            var contact = _contactRepository.GetMessage(id);
+            var contactVM = _mapper.Map<ContactDetailsVM>(contact);
+
+            return contactVM;
         }
     }
 }

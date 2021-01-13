@@ -10,5 +10,7 @@ namespace PhotoAppMVC.Domain.Interface
     {
         int AddMessage(ContactMessage contactMessage);
         IQueryable<ContactMessage> GetAllMessage();
+        void DeleteMessage(int id);
+        ContactMessage GetMessage(int contactId);
     }
 }

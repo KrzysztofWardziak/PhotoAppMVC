@@ -18,8 +18,7 @@ namespace PhotoAppMVC.Application.ViewModels
         public void Mapping(Profile profile)
         {
 
-            profile.CreateMap<CategoriesForListVM, Domain.Model.Categories>().ReverseMap();
-            profile.CreateMap<Domain.Model.Categories, CategoriesForListVM>().ReverseMap();
+            profile.CreateMap<NewCategoriesVM, Domain.Model.Categories>().ReverseMap();
         }
     }
 }

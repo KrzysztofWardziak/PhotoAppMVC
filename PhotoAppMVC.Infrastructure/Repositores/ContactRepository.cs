@@ -24,9 +24,24 @@ namespace PhotoAppMVC.Infrastructure.Repositores
             return contactMessage.Id;
         }
 
+        public void DeleteMessage(int id)
+        {
+            var cont = _context.ContactMessages.Find(id);
+            if (cont != null)
+            {
+                _context.ContactMessages.Remove(cont);
+                _context.SaveChanges();
+            }
+        }
+
         public IQueryable<ContactMessage> GetAllMessage()
         {
             return _context.ContactMessages;
+        }
+
+        public ContactMessage GetMessage(int contactId)
+        {
+            return _context.ContactMessages.FirstOrDefault(c => c.Id == contactId);
         }
     }
 }

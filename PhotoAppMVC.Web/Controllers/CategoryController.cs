@@ -46,5 +46,29 @@ namespace PhotoAppMVC.Web.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult EditCategory(int id)
+        {
+            var cat = _categoriesService.GetCategoryForEdit(id);
+            return View(cat);
+        }
+
+        [HttpPost]
+        public IActionResult EditCategory(NewCategoriesVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                _categoriesService.UpdateCategory(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public IActionResult DeleteCategory(int id)
+        {
+            _categoriesService.DeleteCategory(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }

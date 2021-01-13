@@ -9,7 +9,7 @@
 <p>
     <a asp-action="AddOffer">Create New</a>
 </p>
-@*<table class="table">
+<table class="table">
         <thead>
             <tr>
                 <th>
@@ -29,37 +29,26 @@
         </thead>
         <tbody>
     @foreach (var item in Model.Offers) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Text)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                </td>
-            </tr>
-
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditOffer", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteOffer", new { id=item.Id })
+            </td>
+        </tr>
+        }
 
         </tbody>
-    </table>
-        }*@
-
-@foreach (var item in Model.Offers)
-{
-    <div>
-        <h2>@item.Name</h2>
-        <p>Informacje o sesji: <br/> @item.Text</p>
-        <p>Cena @item.Price</p>
-        <p>Obowiązuje od: @item.Date</p>
-    </div>
-}
+        </table>

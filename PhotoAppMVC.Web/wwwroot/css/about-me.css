@@ -1,5 +1,5 @@
 ﻿
-img {
+/*img .about-me-photo {
 
     float: right;
     margin-left: 15px;
@@ -20,10 +20,22 @@ img {
     padding: 10px;*/
 /*    margin-left: auto;
     margin-right: auto;
-    vertical-align: middle;*/
+    vertical-align: middle;
     
+} */
+img #imgpreview {
+    height: 500px;
+    width: 500px;
+    display: block;
+    border: dashed 2px yellow;
 }
-
+img .uploadPhoto {
+    border: dashed 2px yellow;
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    display: block;
+}
 /*.about-me {
     display: block;
     font-size: 15px;

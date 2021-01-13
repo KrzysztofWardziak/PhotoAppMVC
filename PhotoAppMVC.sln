@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAppMVC.Web", "PhotoAppMVC.Web\PhotoAppMVC.Web.csproj", "{8628AA30-C22E-4227-9556-9D9E62D7AE07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoAppMVC.Web", "PhotoAppMVC.Web\PhotoAppMVC.Web.csproj", "{8628AA30-C22E-4227-9556-9D9E62D7AE07}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A005F818-8522-4704-A761-283B9A06BD87}"
 EndProject
@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{050E29F8-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{160F41C4-F8B9-43D6-9814-A676C14E6414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAppMVC.Application", "PhotoAppMVC.Application\PhotoAppMVC.Application.csproj", "{795CC339-8335-403E-B1DA-D6F4C4842D5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoAppMVC.Application", "PhotoAppMVC.Application\PhotoAppMVC.Application.csproj", "{795CC339-8335-403E-B1DA-D6F4C4842D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAppMVC.Domain", "PhotoAppMVC.Domain\PhotoAppMVC.Domain.csproj", "{70C020C5-48B9-41FB-85D8-B39A5B2A936B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoAppMVC.Domain", "PhotoAppMVC.Domain\PhotoAppMVC.Domain.csproj", "{70C020C5-48B9-41FB-85D8-B39A5B2A936B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAppMVC.Infrastructure", "PhotoAppMVC.Infrastructure\PhotoAppMVC.Infrastructure.csproj", "{C6B1CD96-A6DF-49D4-BECE-F434D0DD4AB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoAppMVC.Infrastructure", "PhotoAppMVC.Infrastructure\PhotoAppMVC.Infrastructure.csproj", "{C6B1CD96-A6DF-49D4-BECE-F434D0DD4AB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAppMVC.Tests", "PhotoAppMVC.Tests\PhotoAppMVC.Tests.csproj", "{45A7D670-5781-4093-852D-23373AE00BBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoAppMVC.Tests", "PhotoAppMVC.Tests\PhotoAppMVC.Tests.csproj", "{45A7D670-5781-4093-852D-23373AE00BBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

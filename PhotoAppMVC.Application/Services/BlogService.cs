@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.Extensions.Logging;
 using PhotoAppMVC.Application.Interfaces;
 using PhotoAppMVC.Application.ViewModels;
 using PhotoAppMVC.Application.ViewModels.Blog;
 using PhotoAppMVC.Application.ViewModels.Customer;
 using PhotoAppMVC.Domain.Interface;
 using PhotoAppMVC.Domain.Model;
+using Serilog;
 
 namespace PhotoAppMVC.Application.Services
 {
@@ -27,13 +30,13 @@ namespace PhotoAppMVC.Application.Services
         public int AddNewBlog(NewBlogVM blog)
         {
             var bl = _mapper.Map<BlogDetails>(blog);
-            var id = _blogRepository.AddBlog(bl);
-            return id;
+                var id = _blogRepository.AddBlog(bl);
+                return id;
         }
 
         public void DeleteBlog(int id)
         {
-           _blogRepository.DeleteBlog(id);
+            _blogRepository.DeleteBlog(id);
         }
 
         public NewBlogVM GetBlogForEdit(int id)
